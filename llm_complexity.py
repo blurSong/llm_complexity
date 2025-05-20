@@ -612,14 +612,14 @@ def calc_inference_complexity(
 
     # csv. TEST + CAPACITY (GBs) + OPS + IO (Bytes)
     if verbose:
-        math_headers, dram_io_headers = list(p_math.keys()), list(d_io.keys())
+        math_headers, dram_io_headers = list(p_math.keys()), list(p_io.keys())
         headers += (
             ["Required DRAM GBs"]
             + [f"{mh.capitalize()} OPs" for mh in math_headers]
             + [f"{dh.capitalize()} Bytes" for dh in dram_io_headers]
         )
-        pvalues += [p_dram / 1e9] + list(p_math.values()) + list(p_io.values())
-        dvaules += [d_dram / 1e9] + list(d_math.values()) + list(d_io.values())
+        pvalues += [p_dram / 1e9] + [int(v) for v in p_math.values()] + [int(v) for v in p_io.values()]
+        dvaules += [d_dram / 1e9] + [int(v) for v in d_math.values()] + [int(v) for v in d_io.values()]
     else:
         headers += ["Required DRAM GBs", "Math OPs", "Total IO Bytes"]
         pvalues += [p_dram / 1e9, p_math, p_io]

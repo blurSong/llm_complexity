@@ -31,7 +31,7 @@ def test_shrink():
         for b in [
             1,
         ]:
-            calc_inference_complexity(model, prompt=1024, output=512, batch=b, axwy="a32w4", verbose=True)
+            calc_inference_complexity(model, prompt=1024, output=512, batch=b, axwy="a32w4", verbose=False)
 
 
 def test_hme():
