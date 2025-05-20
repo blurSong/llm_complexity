@@ -9,7 +9,7 @@ def test_llms():
     ]
     for hf_repo in hf_repos:
         model = auto_model(hf_repo, "models")
-        calc_inference_complexity(model, prompt=1024, output=512, batch=1, axwy="a16w4", verbose=False)
+        calc_inference_complexity(model, prompt=1024, output=512, batch=1, axwy="a16w4", verbose=True)
 
 
 def test_shrink():
@@ -31,7 +31,7 @@ def test_shrink():
         for b in [
             1,
         ]:
-            calc_inference_complexity(model, prompt=1024, output=512, batch=b, axwy="a32w4", verbose=False)
+            calc_inference_complexity(model, prompt=1024, output=512, batch=b, axwy="a32w4", verbose=True)
 
 
 def test_hme():
