@@ -605,8 +605,8 @@ def calc_inference_complexity(
     p_math = model.calc_inference_math_ops(prompt, 0, batch, verbose)
     p_dram, p_io = model.calc_inference_dram_bytes(prompt, 0, batch, axwy, verbose)
 
-    # d. use output/2 for average
-    past_token = prompt + output / 2
+    # d.
+    past_token = prompt + output - 1
     d_math = model.calc_inference_math_ops(1, past_token, batch, verbose)
     d_dram, d_io = model.calc_inference_dram_bytes(1, past_token, batch, axwy, verbose)
 
